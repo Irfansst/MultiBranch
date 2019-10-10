@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.smartstreamrdu.maven</groupId>
+	<artifactId>basic-maven-example</artifactId>
+	<version>1.0</version>
+	<packaging>jar</packaging>
+
+	<name>maven-example-2</name>
+	<url>http://www.smartstreamrdu.com</url>
+	
+	<distributionManagement>
+    <repository>
+    <id>nexus</id>
+    <url>http://localhost:8081/repository/RDU.maven/</url>
+    </repository>
+  </distributionManagement>
+
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+	
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+  <plugins>
+
+    </plugins>
+     </build>
+</project>
+
