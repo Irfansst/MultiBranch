@@ -1,0 +1,3 @@
+[submodule "MavenIn28Minutes"]
+	path = MavenIn28Minutes
+	url = https://github.com/Irfansst/MavenIn28Minutes.git
