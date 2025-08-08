@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Build Project1') {
             steps {
-                sh 'mvn -f Project1/pom.xml clean install'
+                sh 'mvn -f Project2/pom.xml clean install'
             }
         }
         stage('Archive JAR') {
