@@ -1,29 +1,28 @@
-echo "Building Project1"
-
-stage('Tools Initialize') {
-    steps {
-        sh '''
-            echo "PATH = ${PATH}"
-            echo "M2_HOME = ${M2_HOME}"
-        '''
+pipeline {
+    agent any
+    tools {
+        maven 'Maven_3.3.9'
+        jdk 'jdk-11.0.2'
     }
-}
-
-stage('Build Project1') {
-    steps {
-        withEnv([
-            'JAVA_HOME=/opt/java/jdk-11.0.2',
-            'PATH+JAVA=/opt/java/jdk-11.0.2/bin',
-            'MAVEN_HOME=/opt/maven/apache-maven-3.3.9',
-            'PATH+MAVEN=/opt/maven/apache-maven-3.3.9/bin'
-        ]) {
-            sh 'mvn clean install'
+    stages {
+        stage('Initialize Tools') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "JAVA_HOME = ${JAVA_HOME}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
         }
-    }
-}
-
-stage('Archive JAR') {
-    steps {
-        archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+        stage('Build Project1') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+        stage('Archive JAR') {
+            steps {
+                archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+            }
+        }
     }
 }
