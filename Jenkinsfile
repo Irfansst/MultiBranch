@@ -4,9 +4,10 @@ pipeline {
         stage('Build All Projects') {
             steps {
                 script {
-                    def projects = ['Project1', 'Project2']
+                    def projects = ['Project1', 'Project2', 'Project3', 'Project4', 'Project5']
                     for (project in projects) {
-                        build job: "${env.JOB_NAME}/${project}", wait: true
+                        echo "Loading Jenkinsfile from ${project}"
+                        load "${project}/Jenkinsfile"
                     }
                 }
             }
