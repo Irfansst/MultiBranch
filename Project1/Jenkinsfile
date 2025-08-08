@@ -16,12 +16,12 @@ pipeline {
         }
         stage('Build Project1') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn -f Project1/pom.xml clean install'
             }
         }
         stage('Archive JAR') {
             steps {
-                archiveArtifacts artifacts: 'target/*.jar', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'Project1target/*.jar', allowEmptyArchive: true
             }
         }
     }
